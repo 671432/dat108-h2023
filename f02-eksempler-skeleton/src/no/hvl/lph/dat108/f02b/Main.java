@@ -15,20 +15,32 @@ public class Main {
 		
 		//2. Sortere alfabetisk uavhengig av store og små bokstaver
 		//???
+/*		Collections.sort(liste, new Comparator<String>()); {
+			@Override
+					public int compare(String o1, String o2){
+				return o1.compareToIgnoreCase(o2);
+
+			}
+		});
 		System.out.println(listen);
+		*/
 		
 		//3. ..., nå med lambda-uttrykk !!! :)
 		//???
+		Collections.sort(liste, (a, b) -> a.compareToIgnoreCase(b));
+
 		System.out.println(listen);
 		
 		//4. Sortere på lengden på strengene (med lambda-uttrykk)
 		//???
+		Collections.sort(listen, (a, b) -> a.length()-b.length());
 		System.out.println(listen);
 		
 		//5. Sortere på lengden synkende. Putte lambda-uttrykk inn i variabel.
 		//???
+		Comparator<String> baklengs = ((a, b) -> b.length()-a.length());
 		//???
+		Collections.sort(listen, baklengs);
 		System.out.println(listen);
 	}
 }
-

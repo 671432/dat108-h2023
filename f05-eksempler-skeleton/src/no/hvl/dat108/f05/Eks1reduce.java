@@ -26,7 +26,8 @@ public class Eks1reduce {
 		/* En streng med alle initialene, "CD LC TC CB MA" */
 
 		// Samle opp med reduce og +
-//		String initialer = TODO
+		String initialer = people.stream().map(p -> "" + p.getFirstName().charAt(0))
+						.reduce("",(res, fi) -> res + " " + fi).trim();
 
 		// Fjerne ende-spaces med trim 
 //		String initialer = TODO
@@ -34,7 +35,7 @@ public class Eks1reduce {
 		// Alternativt med collect og Collectors.joining
 //		String initialer = TODO
 
-//		System.out.println("|" + initialer + "|");
+		System.out.println("|" + initialer + "|");
 		
 	}	
 

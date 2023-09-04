@@ -27,6 +27,12 @@ public class Eksempel5 {
 		
 		//Med streams:
 		//...
+		List<String> etternavnene = people.stream() //					From people
+				.filter(p -> p.getAge() > 50) //						WHERE age > 50
+				.map(Person::getLastName) //or (p -> p.getLastName()) | SELECT lasName
+				.toList();
+
+		System.out.println(etternavnene);
 	}
 }
 

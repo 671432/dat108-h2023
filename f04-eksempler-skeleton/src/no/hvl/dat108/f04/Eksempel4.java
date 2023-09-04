@@ -22,6 +22,9 @@ public class Eksempel4 {
 		
 		//Med streams:
 		//...
+		people.stream()
+				.filter(p -> p.getFirstName().startsWith("C"))
+				.forEach(System.out::println); //or (p -> System.out::println(p));
 	}
 }
 

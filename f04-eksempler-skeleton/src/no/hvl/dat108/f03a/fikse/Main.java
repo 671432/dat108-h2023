@@ -2,10 +2,8 @@ package no.hvl.dat108.f03a.fikse;
 
 /* Kopiert fra javabrains.io sitt Java 8 Lambda Basics kurs */
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.*;
+import java.util.function.*;
 
 public class Main {
 	
@@ -21,6 +19,25 @@ public class Main {
 		for (Person p : liste) {
 			if (p.getLastName().startsWith("C")) {
 				System.out.println(p);
+			}
+		}
+	}
+
+	static void NotUsedYet(List<Person> liste) {
+		System.out.println();
+		for (Person p : liste) {
+			if (p.getLastName().startsWith("C")) {
+				System.out.println(p);
+			}
+		}
+	}
+
+	static void doConditionally(
+			List<Person> liste, Predicate<Person> pred, Consumer<Person> cons) {
+		System.out.println();
+		for (Person p : liste) {
+			if (pred.test(p)) {
+				cons.accept(p);
 			}
 		}
 	}
@@ -65,6 +82,8 @@ public class Main {
 		
 		// 6: Skriv ut alder til alle over 50 år.
 		//    	Lag en metode doConditionally(...)
+		doConditionally(people, p -> p.getAge()>50,
+				p -> System.out.println(p.getAge())); // x -> System.out.println(x) = System.out::println
 		
 	}
 	
