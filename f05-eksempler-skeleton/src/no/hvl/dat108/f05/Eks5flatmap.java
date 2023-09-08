@@ -9,7 +9,7 @@ public class Eks5flatmap {
 	
 	public static void main(String[] args) throws Exception {
 		
-        List<Integer> primtall = List.of(5, 7, 11,13);
+        List<Integer> primtall = List.of(5, 7, 11, 13);
         List<Integer> oddetall = List.of(1, 3, 5);
         List<Integer> partall  = List.of(2, 4, 6, 8);
   
@@ -20,7 +20,7 @@ public class Eks5flatmap {
           
         List<Integer> flatetListe  = listeAvLister.stream()
         		.flatMap(list -> list.stream()) // Stream<List<Integer>> ---> Stream<Integer>
-//        		.sorted()
+        		.sorted()
         		.toList();
         
         System.out.println("\nlisteAvLister etter 'flattening' (og sortering) : ");

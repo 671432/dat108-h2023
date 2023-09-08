@@ -53,33 +53,29 @@ public class Eks3Optional1 {
 		 * for å få samme resultat som å bruke if-else på "gamlemåten".
 		 */
 		
-		Optional<Integer> a = finnMinsteOver10Opt(enToTre);
-		a.ifPresentOrElse(
-				x -> printFunnet(enToTre, x),
-				() -> printIkkeFunnet(enToTre));
-		
-		Optional<Integer> b = finnMinsteOver10Opt(tiElleveTolv);
-		b.ifPresentOrElse(
-				x -> printFunnet(tiElleveTolv, x), 
-				() -> printIkkeFunnet(tiElleveTolv));
+//		Optional<Integer> a = finnMinsteOver10Opt(enToTre);
+//		a.ifPresentOrElse(x -> printFunnet(enToTre, x),	() -> printIkkeFunnet(enToTre));
+//		
+//		Optional<Integer> b = finnMinsteOver10Opt(tiElleveTolv);
+//		b.ifPresentOrElse(x -> printFunnet(tiElleveTolv, x), () -> printIkkeFunnet(tiElleveTolv));
 
 		//Andre muligheter med Optional.
 		
-		System.out.println("\nifPresent(...)");
-		a.ifPresent(System.out::println);
-		b.ifPresent(System.out::println);
-		
-		System.out.println("\norElse(0)");
-		System.out.println(a.orElse(-1));
-		System.out.println(b.orElse(-1));
-
-		System.out.println("\norElseThrow(...)");
-//		System.out.println(a.orElseThrow(() -> new RuntimeException()));
-		System.out.println(b.orElseThrow(() -> new RuntimeException()));
-		
-		System.out.println("\nget()");
-//		System.out.println(a.get()); //Vil kaste en  java.util.NoSuchElementException siden empty
-		System.out.println(b.get());
+//		System.out.println("\nifPresent(...)");
+//		a.ifPresent(System.out::println);
+//		b.ifPresent(System.out::println);
+//		
+//		System.out.println("\norElse(0)");
+//		System.out.println(a.orElse(-1));
+//		System.out.println(b.orElse(-1));
+//
+//		System.out.println("\norElseThrow(...)");
+////		System.out.println(a.orElseThrow(() -> new RuntimeException()));
+//		System.out.println(b.orElseThrow(() -> new RuntimeException()));
+//		
+//		System.out.println("\nget()");
+////		System.out.println(a.get()); //Vil kaste en  java.util.NoSuchElementException siden empty
+//		System.out.println(b.get());
 	}
 	
 	/** Hjelpemetode for utskrift */
