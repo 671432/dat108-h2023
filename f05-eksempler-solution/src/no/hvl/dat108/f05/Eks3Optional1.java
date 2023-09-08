@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public class Eks3Optional1 {
 	
-	/** Metode som finner minste tall større enn 10 i listen. 
-	 *  Returnerer null om ingen slike finnes.
+	/** Metode som finner minste tall i listen større enn 10. 
+	 *  Returnerer null om ingen er funnet.
 	 */
 	private static Integer finnMinsteOver10(List<Integer> liste) {
 		Integer minste = null;
@@ -23,35 +23,31 @@ public class Eks3Optional1 {
 		return minste;
 	}
 
+	
 	public static void main(String[] args) {
 
 		List<Integer> enToTre = List.of(1, 2, 3);
 		List<Integer> tiElleveTolv = List.of(10, 11, 12);
 
-		//Først på "gamlemåten". Må da gjøre en if-else for de to ulike tilfellene
+		//Først uten Optional. Må da gjøre en if-else for de to ulike tilfellene
 		
 		Integer resultatEnToTre = finnMinsteOver10(enToTre);
-		if (resultatEnToTre != null) { //false
+		if (resultatEnToTre != null) {
 			printFunnet(enToTre, resultatEnToTre);
 		} else {
-			printIkkeFunnet(enToTre); //denne blir utført
+			printIkkeFunnet(enToTre);
 		}
 
 		Integer resultatTiElleveTolv = finnMinsteOver10(tiElleveTolv);
-		if (resultatTiElleveTolv != null) { //true
-			printFunnet(tiElleveTolv, resultatTiElleveTolv); //denne blir utført
+		if (resultatTiElleveTolv != null) {
+			printFunnet(tiElleveTolv, resultatTiElleveTolv);
 		} else {
 			printIkkeFunnet(tiElleveTolv);
 		}
 		
 		System.out.println();
-		/*
-		 * Så med Optional. Må først lage en metode finnMinsteOver10Opt() som
-		 * pakker inn resultatet av den gamle i en Optional.
-		 * 
-		 * Kan da bruke ifPresentOrElse(Consumer, Runnable)
-		 * for å få samme resultat som å bruke if-else på "gamlemåten".
-		 */
+		//Så med Optional. kan da bruke ifPresentOrElse(Consumer, Runnable)
+		//for å få samme resultat
 		
 		Optional<Integer> a = finnMinsteOver10Opt(enToTre);
 		a.ifPresentOrElse(
@@ -60,7 +56,7 @@ public class Eks3Optional1 {
 		
 		Optional<Integer> b = finnMinsteOver10Opt(tiElleveTolv);
 		b.ifPresentOrElse(
-				x -> printFunnet(tiElleveTolv, x), 
+				x -> printFunnet(tiElleveTolv, x),
 				() -> printIkkeFunnet(tiElleveTolv));
 
 		//Andre muligheter med Optional.
@@ -82,6 +78,13 @@ public class Eks3Optional1 {
 		System.out.println(b.get());
 	}
 	
+	/** Metode som finner minste tall i listen større enn 10. 
+	 *  Returnerer Optional.empty om ingen er funnet.
+	 */
+	private static Optional<Integer> finnMinsteOver10Opt(List<Integer> liste) {
+		return Optional.ofNullable(finnMinsteOver10(liste));
+	}
+
 	/** Hjelpemetode for utskrift */
 	private static void printFunnet(List<Integer> liste, Integer tall) {
 		System.out.println("Minste tall over 10 i " + liste + ": " + tall);
@@ -92,12 +95,8 @@ public class Eks3Optional1 {
 		System.out.println("Minste tall over 10 i " + liste + " ikke funnet!");
 	}
 
-	/** Metode som finner minste tall i listen større enn 10. 
-	 *  Returnerer Optional.empty om ingen er funnet.
-	 */
-	private static Optional<Integer> finnMinsteOver10Opt(List<Integer> liste) {
-		return Optional.ofNullable(finnMinsteOver10(liste));
-	}
+	
+
 }
 
 

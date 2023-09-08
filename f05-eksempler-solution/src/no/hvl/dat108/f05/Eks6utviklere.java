@@ -28,17 +28,17 @@ public class Eks6utviklere {
 		String navnCSharp = utviklere.stream()
 				.filter(u -> u.getSpraak().contains("C#"))
 				.map(u -> u.getNavn())
-				.findAny().orElse("INGEN");
+				.findAny()
+				.orElse("INGEN");
 		System.out.println(navnCSharp);
 
 		System.out.println(
 				"\nEn sortert liste over alle programmeringsspråkene utviklerne kan:");
 		List<String> spraak = utviklere.stream()
-				.flatMap(u -> u.getSpraak().stream())
+				.flatMap(u->u.getSpraak().stream())
 				.distinct()
 				.sorted()
 				.toList();
-				
 		System.out.println(spraak);
 
 		System.out.println(
