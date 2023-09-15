@@ -16,6 +16,22 @@ public class _RaceConditionMain {
 		 */
 		
 		//...
+		int antall_ganger = 100_000;
+
+		Teller teller = new Teller();
+
+		Thread telleOppTraad = new TelleOppTraad(teller, antall_ganger);
+		Thread telleNedTraad = new TelleNedTraad(teller, antall_ganger);
+
+		telleOppTraad.start();
+//		Thread.sleep((100)); //using "synchronized" in "Teller" class, but can use this delay as well,
+							//both threads would "talk over each other" without and the result would be wrong.
+		telleNedTraad.start();
+
+		telleOppTraad.join();
+		telleNedTraad.join();
+
+		System.out.println(teller.getVerdi());
 	}
 
 }

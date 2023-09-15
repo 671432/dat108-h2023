@@ -12,12 +12,12 @@ public class _TraaderMedNavnMain {
 		Runnable minRunnable = new MinRunnable(); //se def. nederst
 		
 		// Hva heter main-tråden?
-		// System.out.println("Hallo fra " + ???);
+		System.out.println("Hallo fra " + Thread.currentThread().getName());
 				
 		// Oppretter og starter 10 tråder som sier hva de heter
 		// Trådens navn angis som (valgfri) parameter nr 2 i konstruktøren
 		for (int i=1; i<=10; i++) {
-			//...
+			Thread t = new Thread(minRunnable, "traad" + i);
 		}
 	}
 }
@@ -25,7 +25,7 @@ public class _TraaderMedNavnMain {
 class MinRunnable implements Runnable {
 	@Override
 	public void run() {
-		// String traadnavn = ???;
-		//System.out.println("Hallo fra " + traadnavn);
+		String traadnavn = Thread.currentThread().getName();
+		System.out.println("Hallo fra " + traadnavn);
 	}
 }

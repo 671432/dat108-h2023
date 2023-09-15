@@ -5,11 +5,14 @@ public class Teller {
 	private int verdi = 0;
 
 	public void tellOpp() {
-		verdi++;
+		synchronized(this) { //can either use synchronized inside the method...
+			verdi++;
+		}
 	}
 
-	public void tellNed() {
-		verdi--;
+	public synchronized void tellNed() { //...or we can use synchronized to define the whole method.
+			verdi--;
+
 	}
 
 	public int getVerdi() {
