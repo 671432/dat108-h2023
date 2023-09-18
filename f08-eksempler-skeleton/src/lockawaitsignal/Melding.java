@@ -1,15 +1,37 @@
 package lockawaitsignal;
 
+import java.util.concurrent.locks.*;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Melding {
 
 	private String tekst;
 
-	public String getTekst() {
-		return tekst;
+	private Lock lock = new ReentrantLock();
+	private Condition harTekst = lock.newCondition();
+
+
+	public synchronized String getTekst() {
+		lock.lock();
+		try {
+			while (!harTekst()) {
+				harTekst.await();
+			}
+		}catch (InterruptedException e) {
+		} finally{
+			lock.unlock();
 	}
+		return tekst;
+}
 
 	public void setTekst(String tekst) {
-		this.tekst = tekst;
+		lock.lock();
+		try {
+			this.tekst = tekst;
+			harTekst.signalAll();
+		}finally{
+			lock.unlock();
+		}
 	}
 
 	public boolean harTekst() {
